@@ -48,7 +48,7 @@ const Home = () => {
     if (title) title = title.trim();
     if (!title) return
 
-    const response = await axios.post("https://cohort-1-project-chat-gpt.onrender.com/api/chat", {
+    const response = await axios.post("https://neurosphere-2foq.onrender.com/api/chat", {
       title
     }, {
       withCredentials: true
@@ -61,12 +61,12 @@ const Home = () => {
   // Ensure at least one chat exists initially
   useEffect(() => {
 
-    axios.get("https://cohort-1-project-chat-gpt.onrender.com/api/chat", { withCredentials: true })
+    axios.get("https://neurosphere-2foq.onrender.com/api/chat", { withCredentials: true })
       .then(response => {
         dispatch(setChats(response.data.chats.reverse()));
       })
 
-    const tempSocket = io("https://cohort-1-project-chat-gpt.onrender.com", {
+    const tempSocket = io("https://neurosphere-2foq.onrender.com", {
       withCredentials: true,
     })
 
@@ -119,7 +119,7 @@ const Home = () => {
 
   const getMessages = async (chatId) => {
 
-   const response = await  axios.get(`https://cohort-1-project-chat-gpt.onrender.com/api/chat/messages/${chatId}`, { withCredentials: true })
+   const response = await  axios.get(`https://neurosphere-2foq.onrender.com/api/chat/messages/${chatId}`, { withCredentials: true })
 
    console.log("Fetched messages:", response.data.messages);
 
@@ -153,7 +153,7 @@ return (
         <div className="chat-welcome" aria-hidden="true">
           <div className="chip">Early Preview</div>
           <h1>NeuroSphere - A ChatGPT like Clone</h1>
-          <p>Ask anything. Paste text, brainstorm ideas, or get quick explanations. Your chats stay in the sidebar so you can pick up where you left off.</p>
+          <p>BY GURUSHANT, Ask anything. Paste text, brainstorm ideas, or get quick explanations. Your chats stay in the sidebar so you can pick up where you left off.</p>
         </div>
       )}
       <ChatMessages messages={messages} isSending={isSending} />
